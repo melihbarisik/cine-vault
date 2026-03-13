@@ -1,0 +1,220 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+// ==========================================================================
+// TYPOGRAPHY
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// Google Fonts Import
+// --------------------------------------------------------------------------
+// Cinzel — cinematic serif for headings
+// Inter    — clean sans-serif for body text
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+// --------------------------------------------------------------------------
+// Base
+// --------------------------------------------------------------------------
+
+html {
+  font-size: 100%; // 1rem = 16px
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: v.$font-body;
+  font-size: v.$fs-base;
+  font-weight: v.$fw-regular;
+  line-height: v.$lh-normal;
+  color: v.$color-text-primary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+// --------------------------------------------------------------------------
+// Headings
+// --------------------------------------------------------------------------
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: v.$font-heading;
+  font-weight: v.$fw-bold;
+  line-height: v.$lh-tight;
+  letter-spacing: v.$ls-wide;
+  color: v.$color-text-primary;
+  margin-block: 0;
+}
+
+h1 {
+  @include m.fluid-type(32px, 60px);
+}
+
+h2 {
+  @include m.fluid-type(26px, 42px);
+}
+
+h3 {
+  @include m.fluid-type(22px, 32px);
+}
+
+h4 {
+  @include m.fluid-type(18px, 24px);
+}
+
+h5 {
+  font-size: v.$fs-lg;
+}
+
+h6 {
+  font-size: v.$fs-md;
+}
+
+// --------------------------------------------------------------------------
+// Body Text
+// --------------------------------------------------------------------------
+
+p {
+  margin-block: 0;
+  line-height: v.$lh-relaxed;
+  color: v.$color-text-secondary;
+}
+
+// --------------------------------------------------------------------------
+// Links
+// --------------------------------------------------------------------------
+
+a {
+  color: v.$color-primary;
+  text-decoration: none;
+  transition: color v.$transition-fast;
+
+  &:hover {
+    color: v.$color-primary-light;
+  }
+
+  &:focus-visible {
+    @include m.focus-ring;
+    border-radius: v.$radius-sm;
+  }
+}
+
+// --------------------------------------------------------------------------
+// Lists
+// --------------------------------------------------------------------------
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// --------------------------------------------------------------------------
+// Misc
+// --------------------------------------------------------------------------
+
+strong, b {
+  font-weight: v.$fw-semibold;
+}
+
+em, i {
+  font-style: italic;
+}
+
+small {
+  font-size: v.$fs-sm;
+}
+
+mark {
+  background-color: rgba(v.$color-primary, 0.25);
+  color: v.$color-primary-light;
+  padding-inline: v.$space-1;
+  border-radius: v.$radius-sm;
+}
+
+blockquote {
+  border-left: 3px solid v.$color-primary;
+  padding-left: v.$space-4;
+  font-style: italic;
+  color: v.$color-text-secondary;
+}
+
+code, pre {
+  font-family: v.$font-mono;
+  font-size: v.$fs-sm;
+}
+
+// --------------------------------------------------------------------------
+// Utility Classes
+// --------------------------------------------------------------------------
+
+.text-primary   { color: v.$color-text-primary !important; }
+.text-secondary { color: v.$color-text-secondary !important; }
+.text-muted     { color: v.$color-text-muted !important; }
+.text-accent    { color: v.$color-primary !important; }
+.text-danger    { color: v.$color-secondary !important; }
+
+.text-xs   { font-size: v.$fs-xs; }
+.text-sm   { font-size: v.$fs-sm; }
+.text-base { font-size: v.$fs-base; }
+.text-md   { font-size: v.$fs-md; }
+.text-lg   { font-size: v.$fs-lg; }
+.text-xl   { font-size: v.$fs-xl; }
+.text-2xl  { font-size: v.$fs-2xl; }
+.text-3xl  { font-size: v.$fs-3xl; }
+
+.font-light    { font-weight: v.$fw-light; }
+.font-regular  { font-weight: v.$fw-regular; }
+.font-medium   { font-weight: v.$fw-medium; }
+.font-semibold { font-weight: v.$fw-semibold; }
+.font-bold     { font-weight: v.$fw-bold; }
+
+.font-heading  { font-family: v.$font-heading; }
+.font-body     { font-family: v.$font-body; }
+
+.tracking-tight   { letter-spacing: v.$ls-tight; }
+.tracking-wide    { letter-spacing: v.$ls-wide; }
+.tracking-wider   { letter-spacing: v.$ls-wider; }
+.tracking-widest  { letter-spacing: v.$ls-widest; }
+
+.leading-tight    { line-height: v.$lh-tight; }
+.leading-normal   { line-height: v.$lh-normal; }
+.leading-relaxed  { line-height: v.$lh-relaxed; }
+
+.truncate    { @include m.truncate; }
+.clamp-1     { @include m.line-clamp(1); }
+.clamp-2     { @include m.line-clamp(2); }
+.clamp-3     { @include m.line-clamp(3); }
+
+.text-uppercase { text-transform: uppercase; }
+.text-capitalize { text-transform: capitalize; }
+
+// Movie-specific typography helpers
+.movie-title {
+  font-family: v.$font-heading;
+  font-weight: v.$fw-bold;
+  letter-spacing: v.$ls-wide;
+  color: v.$color-text-primary;
+}
+
+.movie-tagline {
+  font-family: v.$font-body;
+  font-style: italic;
+  font-weight: v.$fw-light;
+  color: v.$color-text-secondary;
+  letter-spacing: v.$ls-wide;
+}
+
+.section-label {
+  font-family: v.$font-body;
+  font-size: v.$fs-xs;
+  font-weight: v.$fw-semibold;
+  letter-spacing: v.$ls-widest;
+  text-transform: uppercase;
+  color: v.$color-primary;
+}
+
+.rating-badge {
+  font-family: v.$font-body;
+  font-weight: v.$fw-bold;
+  color: v.$color-star;
+}

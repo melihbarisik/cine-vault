@@ -1,0 +1,100 @@
+// ==========================================================================
+// MAIN SCSS ENTRY POINT — Cine Vault
+// ==========================================================================
+//
+// Import order:
+//   1. Abstracts  — variables, functions, mixins (no output)
+//   2. Base       — reset, typography, global element styles
+//   3. Layout     — grid, container, header, footer (add as created)
+//   4. Components — cards, buttons, badges... (add as created)
+//   5. Pages      — page-specific overrides   (add as created)
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// 1. Abstracts
+// --------------------------------------------------------------------------
+@use 'abstracts/variables' as v;
+@use 'abstracts/mixins'    as m;
+
+// --------------------------------------------------------------------------
+// 2. Base
+// --------------------------------------------------------------------------
+@use 'base/reset';
+@use 'base/typography';
+
+// --------------------------------------------------------------------------
+// 3. Layout (uncomment / add as you build)
+// --------------------------------------------------------------------------
+// @use 'layout/container';
+// @use 'layout/header';
+// @use 'layout/footer';
+// @use 'layout/sidebar';
+
+// --------------------------------------------------------------------------
+// 4. Components (uncomment / add as you build)
+// --------------------------------------------------------------------------
+// @use 'components/button';
+// @use 'components/card';
+// @use 'components/badge';
+// @use 'components/modal';
+// @use 'components/skeleton';
+// @use 'components/rating';
+// @use 'components/search';
+
+// --------------------------------------------------------------------------
+// 5. Pages (uncomment / add as you build)
+// --------------------------------------------------------------------------
+// @use 'pages/home';
+// @use 'pages/movie-detail';
+// @use 'pages/discover';
+
+// --------------------------------------------------------------------------
+// Global Styles
+// --------------------------------------------------------------------------
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  @include m.custom-scrollbar;
+}
+
+body {
+  background-color: v.$color-bg-primary;
+  color: v.$color-text-primary;
+  min-height: 100dvh;
+}
+
+// Default focus-visible for keyboard navigation
+:focus-visible {
+  @include m.focus-ring;
+}
+
+// Remove focus ring on mouse click (keep for keyboard only)
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+// Images responsive by default
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Container utility
+.container {
+  @include m.container;
+}
+
+// Flex utilities
+.flex-center  { @include m.flex-center; }
+.flex-between { @include m.flex-between; }
+.flex-column  { @include m.flex-column; }
+
+// Visually hidden (screen-reader only)
+.sr-only { @include m.visually-hidden; }
