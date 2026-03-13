@@ -1,0 +1,66 @@
+@use '../../../styles/abstracts/variables' as v;
+@use '../../../styles/abstracts/mixins' as m;
+
+.card {
+  @include m.flex-column;
+  border-radius: v.$radius-lg;
+  overflow: hidden;
+  background: v.$color-surface;
+  cursor: pointer;
+  @include m.hover-lift;
+}
+
+.poster {
+  position: relative;
+  @include m.aspect-ratio(v.$ratio-poster);
+  background: v.$color-bg-secondary;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform v.$transition-slow;
+
+  .card:hover & {
+    transform: scale(1.04);
+  }
+}
+
+.noImage {
+  @include m.flex-center;
+  height: 100%;
+  color: v.$color-text-muted;
+  font-size: v.$fs-xs;
+}
+
+.score {
+  position: absolute;
+  bottom: v.$space-2;
+  right: v.$space-2;
+  background: rgba(0, 0, 0, 0.75);
+  color: v.$color-star;
+  font-size: v.$fs-xs;
+  font-weight: v.$fw-bold;
+  padding: v.$space-1 v.$space-2;
+  border-radius: v.$radius-sm;
+  backdrop-filter: blur(4px);
+}
+
+.info {
+  @include m.flex-column;
+  padding: v.$space-3 v.$space-4;
+  gap: v.$space-1;
+}
+
+.title {
+  font-size: v.$fs-sm;
+  font-weight: v.$fw-semibold;
+  color: v.$color-text-primary;
+  margin: 0;
+  line-height: v.$lh-snug;
+  @include m.line-clamp(2);
+}
+
+.year {
+  font-size: v.$fs-xs;
+  color: v.$color-text-muted;
+}
