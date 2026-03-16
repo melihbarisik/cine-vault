@@ -1,0 +1,77 @@
+@use '../../../styles/abstracts/variables' as v;
+@use '../../../styles/abstracts/mixins' as m;
+
+.track {
+  position: relative;
+  display: flex;
+  background: v.$color-surface;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius-full;
+  padding: v.$space-1;
+  box-shadow: v.$shadow-md;
+  width: fit-content;
+}
+
+.thumb {
+  position: absolute;
+  top: v.$space-1;
+  left: v.$space-1;
+  height: calc(100% - #{v.$space-2});
+  border-radius: v.$radius-full;
+  background: linear-gradient(
+    135deg,
+    v.$color-primary-dark 0%,
+    v.$color-primary 60%,
+    v.$color-primary-light 100%
+  );
+  box-shadow: v.$shadow-glow-primary;
+  transition: transform v.$transition-spring, width v.$transition-spring;
+  pointer-events: none;
+  z-index: v.$z-raised;
+}
+
+.option {
+  position: relative;
+  z-index: v.$z-raised + 1;
+  @include m.flex-center;
+  gap: v.$space-2;
+  padding: v.$space-2 v.$space-6;
+  border: none;
+  background: transparent;
+  border-radius: v.$radius-full;
+  font-family: v.$font-body;
+  font-size: v.$fs-sm;
+  font-weight: v.$fw-medium;
+  color: v.$color-text-muted;
+  cursor: pointer;
+  transition: color v.$transition-base;
+  white-space: nowrap;
+  letter-spacing: v.$ls-wide;
+  user-select: none;
+  min-width: 120px;
+}
+
+.optionActive {
+  color: v.$color-text-inverse;
+  font-weight: v.$fw-bold;
+}
+
+.icon {
+  font-size: v.$fs-base;
+  line-height: 1;
+}
+
+// ── Compact variant ───────────────────────────────────────────────────────────
+
+.trackCompact {
+  .option {
+    padding: v.$space-1 v.$space-4;
+    font-size: v.$fs-xs;
+    min-width: 80px;
+    gap: v.$space-1;
+  }
+
+  .icon {
+    font-size: v.$fs-sm;
+  }
+}

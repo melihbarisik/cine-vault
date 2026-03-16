@@ -11,7 +11,7 @@ export default function SeriesSlider() {
   if (isError) return <p style={{ color: "#E84545", padding: "1rem" }}>Diziler yüklenemedi.</p>;
 
   return (
-    <Slider title="Popüler Diziler">
+    <Slider>
       {data?.results.map((series) => (
         <SeriesCard key={series.id} series={series} />
       ))}

@@ -13,7 +13,7 @@ export default function MoviesSlider() {
   if (isError) return <p style={{ color: "#E84545", padding: "1rem" }}>Filmler yüklenemedi.</p>;
 
   return (
-    <Slider title="Popüler Filmler">
+    <Slider>
       {data?.results.map((movie) => (
         <MovieCard key={movie.id} movie={movie} />
       ))}
