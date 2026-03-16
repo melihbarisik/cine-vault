@@ -1,0 +1,72 @@
+@use '../../../styles/abstracts/variables' as v;
+@use '../../../styles/abstracts/mixins' as m;
+
+.slider {
+  width: 100%;
+}
+
+.header {
+  @include m.flex-between;
+  margin-bottom: v.$space-4;
+  padding-inline: v.$space-4;
+}
+
+.title {
+  font-family: v.$font-heading;
+  font-size: v.$fs-xl;
+  font-weight: v.$fw-semibold;
+  color: v.$color-text-primary;
+  letter-spacing: v.$ls-wide;
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  gap: v.$space-2;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: v.$radius-full;
+  border: 1px solid v.$color-border-light;
+  background: v.$color-surface;
+  color: v.$color-text-primary;
+  font-size: v.$fs-xl;
+  line-height: 1;
+  cursor: pointer;
+  transition: background v.$transition-fast, border-color v.$transition-fast;
+
+  &:hover {
+    background: v.$color-surface-hover;
+    border-color: v.$color-primary;
+    color: v.$color-primary;
+  }
+}
+
+.track {
+  display: flex;
+  gap: v.$space-4;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-inline: v.$space-4;
+  padding-bottom: v.$space-2;
+
+  @include m.custom-scrollbar(4px, v.$color-primary, v.$color-surface);
+
+  & > * {
+    flex: 0 0 160px;
+    scroll-snap-align: start;
+
+    @include m.sm {
+      flex-basis: 180px;
+    }
+
+    @include m.md {
+      flex-basis: 200px;
+    }
+  }
+}

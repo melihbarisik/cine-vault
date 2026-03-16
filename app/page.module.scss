@@ -1,0 +1,11 @@
+@use '../styles/abstracts/variables' as v;
+@use '../styles/abstracts/mixins' as m;
+
+.main {
+  @include m.container;
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-12;
+  padding-top: v.$space-10;
+  padding-bottom: v.$space-16;
+}
