@@ -41,3 +41,26 @@ export interface TMDBTVSeries {
 }
 
 export type PopularTVSeriesResponse = TMDBPaginatedResponse<TMDBTVSeries>;
+
+export interface TMDBGenre {
+  id: number;
+  name: string;
+}
+
+export interface TMDBMovieDetail {
+  id: number;
+  title: string;
+  original_title: string;
+  tagline: string;
+  overview: string;
+  poster_path: string | null;
+  backdrop_path: string | null;
+  release_date: string;
+  runtime: number;
+  genres: TMDBGenre[];
+  vote_average: number;
+  vote_count: number;
+  popularity: number;
+  status: string;
+  adult: boolean;
+}
