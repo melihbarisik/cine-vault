@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { TMDBTVSeries } from "@/common/types/tmdb.types";
-import styles from "@/features/movies/components/MovieCard.module.scss";
+import styles from "@/features/movies/components/MovieCard/MovieCard.module.scss";
 import { useMoviePoster } from "@/common/hooks/useMoviePoster";
 
 interface SeriesCardProps {

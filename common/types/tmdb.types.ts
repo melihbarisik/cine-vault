@@ -42,6 +42,8 @@ export interface TMDBTVSeries {
 
 export type PopularTVSeriesResponse = TMDBPaginatedResponse<TMDBTVSeries>;
 
+export type SearchResponse = TMDBPaginatedResponse<TMDBMovie>;
+
 export interface TMDBGenre {
   id: number;
   name: string;

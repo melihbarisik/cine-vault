@@ -1,7 +1,7 @@
 "use client";
 
 import Slider from "@/common/components/Slider/Slider"
-import MovieCard from "./MovieCard"
+import MovieCard from "../MovieCard"
 import { useMovies } from "@/common/hooks/useMovies";
 
 

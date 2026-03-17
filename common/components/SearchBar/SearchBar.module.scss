@@ -1,0 +1,137 @@
+@use '../../../styles/abstracts/variables' as v;
+@use '../../../styles/abstracts/mixins' as m;
+
+.form {
+  display: flex;
+  gap: v.$space-3;
+  width: 100%;
+  max-width: 600px;
+}
+
+.inputWrapper {
+  position: relative;
+  flex: 1;
+}
+
+.searchIcon {
+  position: absolute;
+  left: v.$space-4;
+  top: 50%;
+  transform: translateY(-50%);
+  color: v.$color-text-muted;
+  display: flex;
+  pointer-events: none;
+  transition: color v.$transition-fast;
+  z-index: v.$z-raised;
+
+  .inputWrapper:focus-within & {
+    color: v.$color-primary;
+  }
+}
+
+.input {
+  width: 100%;
+  height: 48px;
+  padding-left: calc(#{v.$space-4} + 18px + #{v.$space-3});
+  padding-right: v.$space-4;
+  background: rgba(v.$color-surface, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius-full;
+  color: v.$color-text-primary;
+  font-family: v.$font-body;
+  font-size: v.$fs-sm;
+  outline: none;
+  transition: border-color v.$transition-fast, background v.$transition-fast;
+
+  &::placeholder {
+    color: v.$color-text-muted;
+  }
+
+  &:focus {
+    border-color: v.$color-primary;
+    background: v.$color-surface;
+  }
+
+  // Chrome arama temizleme ikonunu gizle
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + v.$space-2);
+  left: 0;
+  right: 0;
+  background: v.$color-surface;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius-lg;
+  list-style: none;
+  margin: 0;
+  padding: v.$space-2 0;
+  z-index: v.$z-dropdown;
+  max-height: 320px;
+  overflow-y: auto;
+  box-shadow: v.$shadow-lg;
+  max-height: 150px;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: v.$space-3 v.$space-4;
+  cursor: pointer;
+  transition: background v.$transition-fast;
+  &:hover {
+    background: rgba(v.$color-primary, 0.1);
+  }
+}
+
+.itemName {
+  font-size: v.$fs-sm;
+  color: v.$color-text-primary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.itemYear {
+  font-size: v.$fs-xs;
+  color: v.$color-text-muted;
+  margin-left: v.$space-3;
+  flex-shrink: 0;
+}
+
+.button {
+  height: 48px;
+  padding-inline: v.$space-6;
+  border: none;
+  border-radius: v.$radius-full;
+  background: linear-gradient(
+    135deg,
+    v.$color-primary-dark 0%,
+    v.$color-primary      60%,
+    v.$color-primary-light 100%
+  );
+  color: v.$color-text-inverse;
+  font-family: v.$font-body;
+  font-size: v.$fs-sm;
+  font-weight: v.$fw-bold;
+  letter-spacing: v.$ls-wide;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: v.$shadow-glow-primary;
+  transition: opacity v.$transition-fast, transform v.$transition-fast;
+
+  &:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

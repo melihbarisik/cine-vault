@@ -1,0 +1,73 @@
+@use '../../styles/abstracts/variables' as v;
+@use '../../styles/abstracts/mixins' as m;
+
+.container {
+  max-width: v.$container-max-width;
+  margin: 0 auto;
+  padding: v.$space-8 v.$container-padding;
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: v.$space-4;
+  margin-bottom: v.$space-8;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-family: v.$font-heading;
+  font-size: v.$fs-2xl;
+  font-weight: v.$fw-bold;
+  color: v.$color-text-primary;
+  margin: 0;
+  line-height: v.$lh-tight;
+}
+
+.label {
+  color: v.$color-text-secondary;
+  font-weight: v.$fw-regular;
+}
+
+.query {
+  color: v.$color-primary;
+}
+
+.count {
+  font-size: v.$fs-sm;
+  color: v.$color-text-muted;
+  white-space: nowrap;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-3;
+  padding: 0;
+  margin: 0;
+}
+
+.skeleton {
+  height: 124px;
+  border-radius: v.$radius-lg;
+  background: v.$color-surface;
+  list-style: none;
+  animation: pulse 1.4s ease-in-out infinite;
+
+  &:nth-child(even) {
+    animation-delay: 0.2s;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+.empty {
+  color: v.$color-text-muted;
+  font-size: v.$fs-base;
+  text-align: center;
+  padding: v.$space-16 0;
+}

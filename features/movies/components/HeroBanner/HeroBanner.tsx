@@ -1,9 +1,11 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
 import { useMovies } from "@/common/hooks/useMovies";
+import SearchBar from "@/common/components/SearchBar/SearchBar";
 import styles from "./HeroBanner.module.scss";
+import { useSearchMovies } from "@/common/hooks/useSearchMovies";
 
 const BACKDROP_BASE = "https://image.tmdb.org/t/p/w1280";
 const POSTER_BASE   = "https://image.tmdb.org/t/p/w500";
@@ -13,6 +15,8 @@ const RAND = Math.random();
 
 export default function HeroBanner() {
   const { data, isLoading } = useMovies();
+  const [searchQuery, setSearchQuery] = useState("");
+  const { data: searchData } = useSearchMovies(searchQuery);
 
   const movie = useMemo(() => {
     if (!data?.results.length) return null;
@@ -29,6 +33,11 @@ export default function HeroBanner() {
   const imageSrc = movie.backdrop_path
     ? `${BACKDROP_BASE}${movie.backdrop_path}`
     : `${POSTER_BASE}${movie.poster_path}`;
+
+
+    const handleSearch = (query: string) => {
+      setSearchQuery(query);
+    }
 
   return (
     <div className={styles.banner}>
@@ -47,6 +56,7 @@ export default function HeroBanner() {
         <p className={styles.subtitle}>
           Popüler filmleri ve dizileri keşfedin.
         </p>
+        <SearchBar onSearch={handleSearch} results={searchData?.results} />
       </div>
     </div>
   );
