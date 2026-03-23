@@ -32,6 +32,34 @@
   font-size: v.$fs-xs;
 }
 
+.favBtn {
+  position: absolute;
+  top: v.$space-2;
+  right: v.$space-2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  color: v.$color-text-muted;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: color v.$transition-fast, background v.$transition-fast, transform v.$transition-fast;
+  z-index: 1;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.15);
+  }
+
+  &.favActive {
+    color: v.$color-star;
+  }
+}
+
 .score {
   position: absolute;
   bottom: v.$space-2;
